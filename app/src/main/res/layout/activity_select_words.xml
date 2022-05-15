@@ -9,17 +9,31 @@
     android:orientation="vertical"
     >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="0/10"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1">
+
+    </TextView>
+
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:orientation="vertical"
+        android:paddingTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topLayout"
         app:layout_constraintVertical_bias="0.32">
 
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayout1_1"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
@@ -111,11 +125,11 @@
         </LinearLayout>
         <!--___________________________________________________________________-->
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout1_2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:paddingTop="2dp"
+            android:paddingTop="5dp"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -203,11 +217,11 @@
         </LinearLayout>
         <!--___________________________________________________________________-->
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/linearLayout1_3"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:paddingTop="2dp"
+            android:paddingTop="5dp"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
@@ -295,11 +309,11 @@
         </LinearLayout>
         <!--___________________________________________________________________-->
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/linearLayout1_4"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:paddingTop="2dp"
+            android:paddingTop="5dp"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
@@ -387,11 +401,11 @@
         </LinearLayout>
         <!--___________________________________________________________________-->
         <LinearLayout
-            android:id="@+id/linearLayout5"
+            android:id="@+id/linearLayout1_5"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:paddingTop="2dp"
+            android:paddingTop="5dp"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
@@ -480,11 +494,11 @@
 
         <!--___________________________________________________________________-->
         <LinearLayout
-            android:id="@+id/linearLayout5"
+            android:id="@+id/linearLayout1_6"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:paddingTop="2dp"
+            android:paddingTop="5dp"
             android:weightSum="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
