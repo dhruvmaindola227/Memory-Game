@@ -1,6 +1,7 @@
 package com.example.gameattempt
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
@@ -86,6 +87,9 @@ class WordsActivity : AppCompatActivity() {
                         tvWord.text = easyArray[index]
                         index++
                         mHandler.postDelayed(this,1500)
+                    }else{
+                    val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                    startActivity(intent)
                     }
                 }
 
@@ -94,6 +98,9 @@ class WordsActivity : AppCompatActivity() {
                         tvWord.text = mediumArray[index]
                         index++
                         mHandler.postDelayed(this,1000)
+                    }else{
+                        val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                        startActivity(intent)
                     }
                 }
 
@@ -102,6 +109,9 @@ class WordsActivity : AppCompatActivity() {
                         tvWord.text = hardArray[index]
                         index++
                         mHandler.postDelayed(this,500)
+                    }else{
+                        val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                        startActivity(intent)
                     }
                 }
             }

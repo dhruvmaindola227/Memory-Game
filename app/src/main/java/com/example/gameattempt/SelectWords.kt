@@ -1,0 +1,12 @@
+package com.example.gameattempt
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class SelectWords : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_select_words)
+
+    }
+}

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameAttempt">
         <activity
+            android:name=".SelectWords"
+            android:exported="false" />
+        <activity
             android:name=".WordsActivity"
             android:exported="false" />
         <activity

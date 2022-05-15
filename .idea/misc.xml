@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/drawable/default_border.xml" value="0.2703125" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/drawable/gif.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/activity_select_words.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/activity_selectwords.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/activity_splash.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/activity_words.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maind/AndroidStudioProjects/GameAttempt/app/src/main/res/layout/fragment_words.xml" value="0.25416666666666665" />
