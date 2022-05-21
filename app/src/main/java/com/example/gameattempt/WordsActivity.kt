@@ -22,43 +22,6 @@ import kotlin.concurrent.timerTask
 
 
 class WordsActivity : AppCompatActivity() {
-
-    var easyArray = arrayOf(
-        "Application",
-        "Motorola",
-        "Package",
-        "India",
-        "Water",
-        "Bottle",
-        "Random",
-        "Medicine",
-        "Six",
-        "Games"
-    )
-    var mediumArray = arrayOf(
-        "Bresenham",
-        "Scissors",
-        "Quinoa",
-        "Callous",
-        "Independence",
-        "Unambiguous",
-        "Quiet",
-        "Quite",
-        "Exaggeration",
-        "Introspection"
-    )
-    var hardArray = arrayOf(
-        "Pellucid",
-        "Indoctrination",
-        "Gratuitous",
-        "Egregious",
-        "Circumlocution",
-        "Equivocate",
-        "Curmudgeon",
-        "Surreptitious",
-        "Puissant",
-        "Solicitous"
-    )
     private lateinit var tvWord: TextView
     private var level: Int = 0
     private var index = 0
@@ -83,34 +46,38 @@ class WordsActivity : AppCompatActivity() {
             when(level)
             {
                 1 -> {
-                    if(index!=easyArray.size) {
-                        tvWord.text = easyArray[index]
+                    if(index < 10) {
+                        tvWord.text = WordArrays.easyArray[index]
                         index++
-                        mHandler.postDelayed(this,1500)
+                        mHandler.postDelayed(this,1200)
+                        //"this" keyword is being used for recursion , calling the run() method.
                     }else{
                     val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                    intent.putExtra("value",1)
                     startActivity(intent)
                     }
                 }
 
                 2-> {
-                    if(index!=mediumArray.size) {
-                        tvWord.text = mediumArray[index]
+                    if(index < 10) {
+                        tvWord.text = WordArrays.mediumArray[index]
                         index++
                         mHandler.postDelayed(this,1000)
                     }else{
                         val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                        intent.putExtra("value",2)
                         startActivity(intent)
                     }
                 }
 
                 3 -> {
-                    if(index!=hardArray.size) {
-                        tvWord.text = hardArray[index]
+                    if(index < 10) {
+                        tvWord.text = WordArrays.hardArray[index]
                         index++
                         mHandler.postDelayed(this,500)
                     }else{
                         val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                        intent.putExtra("value",3)
                         startActivity(intent)
                     }
                 }
