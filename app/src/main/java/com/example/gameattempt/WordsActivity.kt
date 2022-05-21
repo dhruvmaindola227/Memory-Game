@@ -26,7 +26,7 @@ class WordsActivity : AppCompatActivity() {
     private var level: Int = 0
     private var index = 0
     private var mHandler=Handler()
-
+    private var numSet = HashSet<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class WordsActivity : AppCompatActivity() {
             {
                 1 -> {
                     if(index < 10) {
-                        tvWord.text = WordArrays.easyArray[index]
+                        tvWord.text = WordArrays.easyArray[rand(0,9)]
                         index++
                         mHandler.postDelayed(this,1200)
                         //"this" keyword is being used for recursion , calling the run() method.
@@ -60,7 +60,7 @@ class WordsActivity : AppCompatActivity() {
 
                 2-> {
                     if(index < 10) {
-                        tvWord.text = WordArrays.mediumArray[index]
+                        tvWord.text = WordArrays.mediumArray[rand(0,9)]
                         index++
                         mHandler.postDelayed(this,1000)
                     }else{
@@ -72,7 +72,7 @@ class WordsActivity : AppCompatActivity() {
 
                 3 -> {
                     if(index < 10) {
-                        tvWord.text = WordArrays.hardArray[index]
+                        tvWord.text = WordArrays.hardArray[rand(0,9)]
                         index++
                         mHandler.postDelayed(this,500)
                     }else{
@@ -84,6 +84,17 @@ class WordsActivity : AppCompatActivity() {
             }
         }
         }
+
+    //to set different elements in different textviews.
+    fun rand(start: Int, end: Int): Int {
+        var numberToReturn = (start..end).random()
+        if(!numSet.contains(numberToReturn)){
+            numSet.add(numberToReturn)
+        }else{
+            numberToReturn = rand(start,end)
+        }
+        return numberToReturn
+    }
     }
 
 
