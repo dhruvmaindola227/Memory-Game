@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gameattempt">
+    package="com.example.gameattempt"
+    >
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:theme="@style/Theme.GameAttempt">
         <activity
             android:name=".SelectWords"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".WordsActivity"
             android:exported="false" />
@@ -23,7 +25,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            />
+            \/>
         </activity>
         <activity
             android:name=".MainActivity"

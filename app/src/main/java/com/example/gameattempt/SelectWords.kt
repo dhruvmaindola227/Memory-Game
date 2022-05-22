@@ -2,6 +2,8 @@ package com.example.gameattempt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import java.util.*
@@ -85,9 +87,16 @@ class SelectWords : AppCompatActivity() {
                   if(checkAnswer(arrayOfTextViews[i].text.toString() , level)){
                       correctCount++
                       arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.correct_border)
+                          //loading our custom made animations
+                          val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+                          //starting the animation
+                          arrayOfTextViews[i].startAnimation(animation)
                       scoreTv.text = "$correctCount/10"
                   }else{
                       arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.wrong_border)
+                      val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+                      //starting the animation
+                      arrayOfTextViews[i].startAnimation(animation)
                   }
               }
               }
