@@ -40,7 +40,6 @@ class WordsActivity : AppCompatActivity() {
         mrunnable.run()
     }
 
-
     val mrunnable:Runnable = object : Runnable {
         override fun run() {
             when(level)
@@ -92,6 +91,7 @@ class WordsActivity : AppCompatActivity() {
             numSet.add(numberToReturn)
         }else{
             numberToReturn = rand(start,end)
+        //recursively calling the function until it returns a unique number in the given range
         }
         return numberToReturn
     }

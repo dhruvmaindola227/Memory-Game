@@ -3,15 +3,22 @@ package com.example.gameattempt
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import org.w3c.dom.Text
+import androidx.core.content.ContextCompat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 class SelectWords : AppCompatActivity() {
     private var numSet = HashSet<Int>()
+    private var selectedCount = 0
+    private var correctCount = 0
+    lateinit var scoreTv : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_words)
         val start = 1
         val end = 24
+        scoreTv = findViewById<TextView>(R.id.scoreTv)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)
         var tv3 = findViewById<TextView>(R.id.tv3)
@@ -41,27 +48,59 @@ class SelectWords : AppCompatActivity() {
                                                     tv11,tv12,tv13,tv14,tv15,tv16,tv17,tv18,tv19,tv20,
                                                     tv21,tv22,tv23,tv24)
 
+
+
         when(level){
 
             1 -> {
                 for (i in arrayOfTextViews.indices){
                         arrayOfTextViews[i].text = WordArrays.easyArray[rand(0,23)]
                 }
+                setClickListeners(arrayOfTextViews , level)
             }
 
             2 ->{
                 for (i in arrayOfTextViews.indices){
                     arrayOfTextViews[i].text = WordArrays.mediumArray[rand(0,23)]
                 }
+                setClickListeners(arrayOfTextViews , level)
             }
 
             3 -> {
                 for (i in arrayOfTextViews.indices){
                     arrayOfTextViews[i].text = WordArrays.hardArray[rand(0,23)]
                 }
+                setClickListeners(arrayOfTextViews , level)
             }
 
         }
+    }
+
+    private fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {
+          for (i in arrayOfTextViews.indices){
+
+              arrayOfTextViews[i].setOnClickListener {
+                  if(selectedCount < 10 && correctCount < 11){
+                  selectedCount++
+                  if(checkAnswer(arrayOfTextViews[i].text.toString() , level)){
+                      correctCount++
+                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.correct_border)
+                      scoreTv.text = "$correctCount/10"
+                  }else{
+                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.wrong_border)
+                  }
+              }
+              }
+          }
+    }
+
+    private fun checkAnswer(textViewString: String, level: Int): Boolean {
+        when(level){
+            1 -> return WordArrays.easyArray.copyOfRange(0, 9).contains(textViewString)
+            2 -> return WordArrays.mediumArray.copyOfRange(0, 9).contains(textViewString)
+            3 -> return WordArrays.hardArray.copyOfRange(0, 9).contains(textViewString)
+        }
+        return false
     }
 
     //to set different elements in different textviews.
