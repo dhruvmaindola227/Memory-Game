@@ -6,6 +6,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
@@ -15,12 +16,14 @@ class SelectWords : AppCompatActivity() {
     private var selectedCount = 0
     private var correctCount = 0
     lateinit var scoreTv : TextView
+    lateinit var selectedTv : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_words)
         val start = 1
         val end = 24
         scoreTv = findViewById<TextView>(R.id.scoreTv)
+        selectedTv = findViewById(R.id.selectedTv)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)
         var tv3 = findViewById<TextView>(R.id.tv3)
@@ -84,6 +87,7 @@ class SelectWords : AppCompatActivity() {
               arrayOfTextViews[i].setOnClickListener {
                   if(selectedCount < 10 && correctCount < 11){
                   selectedCount++
+                      selectedTv.text = "$selectedCount/10"
                   if(checkAnswer(arrayOfTextViews[i].text.toString() , level)){
                       correctCount++
                       arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.correct_border)
