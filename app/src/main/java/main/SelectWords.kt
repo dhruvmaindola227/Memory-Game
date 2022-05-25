@@ -99,7 +99,6 @@ class SelectWords : AppCompatActivity() {
 
     private fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {
           for (i in arrayOfTextViews.indices){
-
               arrayOfTextViews[i].setOnClickListener {
                   if(selectedCount < 10 && correctCount < 11){
                   selectedCount++
@@ -129,9 +128,9 @@ class SelectWords : AppCompatActivity() {
 
     private fun checkAnswer(textViewString: String, level: Int): Boolean {
         when(level){
-            1 -> return WordArrays.easyArray.copyOfRange(0, 9).contains(textViewString)
-            2 -> return WordArrays.mediumArray.copyOfRange(0, 9).contains(textViewString)
-            3 -> return WordArrays.hardArray.copyOfRange(0, 9).contains(textViewString)
+            1 -> return WordArrays.easyArray.copyOfRange(0, 10).contains(textViewString) //10 because the end parameter is exclusive
+            2 -> return WordArrays.mediumArray.copyOfRange(0, 10).contains(textViewString)  //and we want 0-9 index.
+            3 -> return WordArrays.hardArray.copyOfRange(0, 10).contains(textViewString)
         }
         return false
     }
