@@ -1,15 +1,14 @@
-package com.example.gameattempt
+package main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import org.w3c.dom.Text
+import com.example.gameattempt.R
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
@@ -107,14 +106,18 @@ class SelectWords : AppCompatActivity() {
                       selectedTv.text = "$selectedCount/10"
                   if(checkAnswer(arrayOfTextViews[i].text.toString() , level)){
                       correctCount++
-                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.correct_border)
+                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this ,
+                          R.drawable.correct_border
+                      )
                           //loading our custom made animations
                           val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
                           //starting the animation
                           arrayOfTextViews[i].startAnimation(animation)
                       scoreTv.text = "$correctCount/10"
                   }else{
-                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this , R.drawable.wrong_border)
+                      arrayOfTextViews[i].background = ContextCompat.getDrawable(this ,
+                          R.drawable.wrong_border
+                      )
                       val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
                       //starting the animation
                       arrayOfTextViews[i].startAnimation(animation)

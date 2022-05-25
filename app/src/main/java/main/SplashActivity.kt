@@ -1,16 +1,14 @@
-package com.example.gameattempt
+package main
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.view.WindowManager
-import android.view.animation.AnticipateInterpolator
 import android.widget.ImageView
-import androidx.core.animation.doOnEnd
 import com.bumptech.glide.Glide
+import com.example.gameattempt.R
+
 
 class SplashActivity : AppCompatActivity() {
     lateinit var  imageView: ImageView //declaring the imageView in the xml file
@@ -27,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, StartingActivity::class.java)
             startActivity(intent)
             finish()
         }, 1500)

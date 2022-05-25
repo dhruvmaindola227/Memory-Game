@@ -1,11 +1,11 @@
-package com.example.gameattempt
+package main
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gameattempt.R
 
 class ScoreAdapter(
     var highScoreList: List<Leaderboard>
@@ -26,7 +26,7 @@ class ScoreAdapter(
 //        val view = LayoutInflater.from(parent.context).inflate(R.layout.score_board , parent , false)
 //        return ScoreViewHolder(view)
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view= layoutInflater.inflate(R.layout.score_board , parent , false)
+        val view= layoutInflater.inflate(R.layout.score_board, parent , false)
         return ScoreViewHolder(view)
     }
 

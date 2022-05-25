@@ -1,4 +1,4 @@
-package com.example.gameattempt
+package main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONObject
-import android.util.Log
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.gameattempt.R
 import org.json.JSONException
 
 class LeaderBoardActivity : AppCompatActivity() {
@@ -30,7 +28,11 @@ class LeaderBoardActivity : AppCompatActivity() {
         var highScoreList = ArrayList<Leaderboard>()
 
         try {
-            val obj = JSONObject(Utils.getJsonDataFromAsset(applicationContext , "UserScoreData.json")!!)
+            val obj = JSONObject(
+                Utils.getJsonDataFromAsset(
+                    applicationContext,
+                    "UserScoreData.json"
+                )!!)
             val scoreArray = obj.getJSONArray("scores")
 
             for(i in 0 until scoreArray.length()){

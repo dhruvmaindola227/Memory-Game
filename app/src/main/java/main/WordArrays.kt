@@ -1,4 +1,4 @@
-package com.example.gameattempt
+package main
 
 class WordArrays {
    companion object{

@@ -1,4 +1,4 @@
-package com.example.gameattempt
+package main
 
 data class Leaderboard(
     val name : String,

@@ -1,24 +1,12 @@
-package com.example.gameattempt
+package main
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
 import android.widget.TextView
-import java.time.Duration
-import kotlin.concurrent.fixedRateTimer
-import android.widget.Toast
 import java.util.*
-import android.view.animation.Animation
 
-import android.view.animation.AlphaAnimation
-
-import android.view.View
-import org.w3c.dom.Text
-import java.lang.Exception
-import java.util.concurrent.DelayQueue
-import kotlin.concurrent.timerTask
+import com.example.gameattempt.R
 
 
 class WordsActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.gameattempt
+package main
 
 import android.content.Context
 import java.io.IOException
