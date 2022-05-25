@@ -7,6 +7,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import org.w3c.dom.Text
 import java.util.*
@@ -85,10 +86,14 @@ class SelectWords : AppCompatActivity() {
 
 
         btnFinish.setOnClickListener {
-            val intent = Intent(this@SelectWords , LeaderBoardActivity::class.java)
-            intent.putExtra("level" , level)
-            startActivity(intent)
-            finish()
+            if(selectedCount < 10){
+                Toast.makeText(this , "You need to select 10 words." , Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this@SelectWords, LeaderBoardActivity::class.java)
+                intent.putExtra("level", level)
+                startActivity(intent)
+                finish()
+            }
         }
 
     }
