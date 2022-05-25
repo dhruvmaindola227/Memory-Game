@@ -1,9 +1,11 @@
 package com.example.gameattempt
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import org.w3c.dom.Text
@@ -24,6 +26,7 @@ class SelectWords : AppCompatActivity() {
         val end = 24
         scoreTv = findViewById<TextView>(R.id.scoreTv)
         selectedTv = findViewById(R.id.selectedTv)
+        var btnFinish = findViewById<Button>(R.id.btnFinish)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)
         var tv3 = findViewById<TextView>(R.id.tv3)
@@ -79,6 +82,15 @@ class SelectWords : AppCompatActivity() {
             }
 
         }
+
+
+        btnFinish.setOnClickListener {
+            val intent = Intent(this@SelectWords , LeaderBoardActivity::class.java)
+            intent.putExtra("level" , level)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     private fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {

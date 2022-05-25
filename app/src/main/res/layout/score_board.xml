@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding = "5dp"
+        android:layout_margin="10dp"
+        android:outlineAmbientShadowColor="@color/black"
+        app:cardCornerRadius="5dp"
+       >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="#B6DCFE">
+
+                <TextView
+                    android:id="@+id/tvNameLabel"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Name :"
+                    android:paddingLeft="5dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvScoreLabel"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="score :"
+                    android:paddingLeft="5dp"
+                    android:textStyle="bold"
+                    android:textSize="17sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvDifficultyLabel"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/black"
+                    android:paddingLeft="5dp"
+                    android:text="Level :"
+                    android:textStyle="bold"
+                    android:textSize="17sp">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/ll1"
+                android:background="#CDEDFD">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingLeft="5dp"
+                    android:text="Dhruv"
+                    android:textSize="17sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="10/10"
+                    android:textSize="17sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tvDifficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Easy"
+                    android:textSize="17sp">
+
+                </TextView>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>
