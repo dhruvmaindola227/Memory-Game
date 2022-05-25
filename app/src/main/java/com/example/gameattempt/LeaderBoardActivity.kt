@@ -1,7 +1,9 @@
 package com.example.gameattempt
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +21,7 @@ class LeaderBoardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_leader_board)
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        var btnBack = findViewById<Button>(R.id.btnBack)
         var highScoreList = mutableListOf(
             Leaderboard("Dhruv" , "6" , "easy"),
             Leaderboard("Mukesh" , "3" , "medium"),
@@ -34,6 +37,9 @@ class LeaderBoardActivity : AppCompatActivity() {
 
         val adapter = ScoreAdapter(highScoreList)
         recyclerView.adapter = adapter
-
+        btnBack.setOnClickListener {
+            val intent = Intent(this@LeaderBoardActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
