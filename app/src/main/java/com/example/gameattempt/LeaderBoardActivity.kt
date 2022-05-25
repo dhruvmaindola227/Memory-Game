@@ -7,6 +7,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONObject
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONException
 
 class LeaderBoardActivity : AppCompatActivity() {
     lateinit var tvNameLabel : TextView
@@ -22,24 +27,29 @@ class LeaderBoardActivity : AppCompatActivity() {
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         var btnBack = findViewById<Button>(R.id.btnBack)
-        var highScoreList = mutableListOf(
-            Leaderboard("Dhruv" , "6" , "easy"),
-            Leaderboard("Mukesh" , "3" , "medium"),
-            Leaderboard("Suresh" , "3" , "hard"),
-            Leaderboard("Mukesh" , "3" , "medium"),
-            Leaderboard("Mukesh" , "3" , "medium"),
-            Leaderboard("Mukesh" , "3" , "medium"),
-            Leaderboard("Mukesh" , "3" , "medium"),
-            Leaderboard("Mukesh" , "3" , "medium")
+        var highScoreList = ArrayList<Leaderboard>()
 
+        try {
+            val obj = JSONObject(Utils.getJsonDataFromAsset(applicationContext , "UserScoreData.json")!!)
+            val scoreArray = obj.getJSONArray("scores")
 
-        )
-
+            for(i in 0 until scoreArray.length()){
+                val user = scoreArray.getJSONObject(i)
+                val name = user.getString("name")
+                val score = user.getString("score")
+                val level = user.getString("level")
+                var leaderboard = Leaderboard(name , score , level)
+                highScoreList.add(leaderboard)
+            }
+        } catch (e : JSONException){
+            e.printStackTrace()
+        }
         val adapter = ScoreAdapter(highScoreList)
         recyclerView.adapter = adapter
         btnBack.setOnClickListener {
             val intent = Intent(this@LeaderBoardActivity, MainActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
