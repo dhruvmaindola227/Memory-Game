@@ -98,8 +98,10 @@ class SelectWords : AppCompatActivity() {
     }
 
     private fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {
+        var wasClicked = false
           for (i in arrayOfTextViews.indices){
               arrayOfTextViews[i].setOnClickListener {
+                  wasClicked = true
                   if(selectedCount < 10 && correctCount < 11){
                   selectedCount++
                       selectedTv.text = "$selectedCount/10"
@@ -122,6 +124,7 @@ class SelectWords : AppCompatActivity() {
                       arrayOfTextViews[i].startAnimation(animation)
                   }
               }
+                  arrayOfTextViews[i].isEnabled = false
               }
           }
     }
