@@ -1,5 +1,6 @@
 package main
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,7 @@ class SelectWords : AppCompatActivity() {
         val end = 24
         scoreTv = findViewById<TextView>(R.id.scoreTv)
         selectedTv = findViewById(R.id.selectedTv)
+        val userName = intent.getStringExtra("name")
         var btnFinish = findViewById<Button>(R.id.btnFinish)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)
@@ -51,45 +53,60 @@ class SelectWords : AppCompatActivity() {
         var tv22 = findViewById<TextView>(R.id.tv22)
         var tv23 = findViewById<TextView>(R.id.tv23)
         var tv24 = findViewById<TextView>(R.id.tv24)
-        var level = intent.getIntExtra("value", 0)
+        var leveldiff = intent.getIntExtra("value", 0)
+        var level = when (leveldiff) {
+            1 -> {
+                "easy"
+            }
+            2 -> {
+                "medium"
+            }
+            else -> "hard"
+        }
         var arrayOfTextViews = arrayListOf<TextView>(tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,
                                                     tv11,tv12,tv13,tv14,tv15,tv16,tv17,tv18,tv19,tv20,
                                                     tv21,tv22,tv23,tv24)
 
 
 
-        when(level){
+        when(leveldiff){
 
             1 -> {
                 for (i in arrayOfTextViews.indices){
                         arrayOfTextViews[i].text = WordArrays.easyArray[rand(0,23)]
                 }
-                setClickListeners(arrayOfTextViews , level)
+                setClickListeners(arrayOfTextViews , leveldiff)
             }
 
             2 ->{
                 for (i in arrayOfTextViews.indices){
                     arrayOfTextViews[i].text = WordArrays.mediumArray[rand(0,23)]
                 }
-                setClickListeners(arrayOfTextViews , level)
+                setClickListeners(arrayOfTextViews , leveldiff)
             }
 
             3 -> {
                 for (i in arrayOfTextViews.indices){
                     arrayOfTextViews[i].text = WordArrays.hardArray[rand(0,23)]
                 }
-                setClickListeners(arrayOfTextViews , level)
+                setClickListeners(arrayOfTextViews , leveldiff)
             }
 
         }
 
-
+        var sharePref = getSharedPreferences("userScores" , Context.MODE_PRIVATE)
+        val editor = sharePref.edit()
         btnFinish.setOnClickListener {
             if(selectedCount < 10){
                 Toast.makeText(this , "You need to select 10 words." , Toast.LENGTH_SHORT).show()
             } else {
+                val name = userName
+                val score = correctCount
+
                 val intent = Intent(this@SelectWords, LeaderBoardActivity::class.java)
-                intent.putExtra("level", level)
+                intent.putExtra("level", leveldiff)
+                val intent2 = Intent(this@SelectWords, LeaderBoardActivity::class.java)
+                intent2.putExtra("score" , correctCount)
                 startActivity(intent)
                 finish()
             }

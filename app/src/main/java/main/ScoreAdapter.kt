@@ -22,9 +22,6 @@ class ScoreAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreViewHolder {
-    //called when recyclerView needs a new viewHolder
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.score_board , parent , false)
-//        return ScoreViewHolder(view)
         val layoutInflater = LayoutInflater.from(parent.context)
         val view= layoutInflater.inflate(R.layout.score_board, parent , false)
         return ScoreViewHolder(view)

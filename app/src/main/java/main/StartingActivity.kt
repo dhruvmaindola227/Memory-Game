@@ -20,6 +20,8 @@ class StartingActivity : AppCompatActivity() {
             else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                val intent2 = Intent(this@StartingActivity , SelectWords::class.java)
+                intent2.putExtra("name" , etName.toString())
                 finish()
             }
         }
