@@ -52,7 +52,7 @@ class LeaderBoardActivity : AppCompatActivity() {
         val adapter = ScoreAdapter(list)
         recyclerView.adapter = adapter
         btnBack.setOnClickListener {
-            val intent = Intent(this@LeaderBoardActivity, MainActivity::class.java)
+            val intent = Intent(this@LeaderBoardActivity, StartingActivity::class.java)
             startActivity(intent)
         }
 

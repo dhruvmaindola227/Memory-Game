@@ -20,24 +20,29 @@ class MainActivity : AppCompatActivity() {
         btnEasy=findViewById(R.id.btnEasy)
         btnMedium=findViewById(R.id.btnMedium)
         btnHard=findViewById(R.id.btnHard)
-
+        var bundle = Bundle()
+        var name = intent?.getStringExtra("name")
+        println("In main activity ->" + name)
         btnEasy.setOnClickListener {
             val intent = Intent(this, WordsActivity::class.java)
-            intent.putExtra("value",1)
+            intent.putExtra("value" , 1)
+            intent.putExtra("name" , name)
             startActivity(intent)
 
         }
         btnMedium.setOnClickListener {
             val intent = Intent(this, WordsActivity::class.java)
-            intent.putExtra("value",2)
+            intent.putExtra("value" , 2)
+            intent.putExtra("name" , name)
             startActivity(intent)
 
         }
         btnHard.setOnClickListener {
-            val intent = Intent(this, WordsActivity::class.java)
-            intent.putExtra("value",3)
-            startActivity(intent)
 
+            val intent = Intent(this, WordsActivity::class.java)
+            intent.putExtra("value" , 3)
+            intent.putExtra("name" , name)
+            startActivity(intent)
         }
     }
 

@@ -25,16 +25,19 @@ import kotlin.concurrent.timerTask
 
 class WordsActivity : AppCompatActivity() {
     private lateinit var tvWord: TextView
-    private var level: Int = 0
     private var index = 0
+    private var level = 0
     private var mHandler=Handler()
     private var numSet = HashSet<Int>()
-
+    lateinit var name : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_words)
+        name = intent?.getStringExtra("name").toString()
+        println("in words activity name -> "+ name)
         tvWord = findViewById<TextView>(R.id.tvWord)
-        level = intent.getIntExtra("value", 0)
+
+        level = intent.getIntExtra("value" , 0)
         printArrays()
     }
 
@@ -54,7 +57,8 @@ class WordsActivity : AppCompatActivity() {
                         //"this" keyword is being used for recursion , calling the run() method.
                     }else{
                         val intent = Intent(this@WordsActivity, SelectWords::class.java)
-                        intent.putExtra("value",1)
+                        intent.putExtra("value" , level)
+                        intent.putExtra("name" , name)
                         startActivity(intent)
                     }
                 }
@@ -66,7 +70,8 @@ class WordsActivity : AppCompatActivity() {
                         mHandler.postDelayed(this,1000)
                     }else{
                         val intent = Intent(this@WordsActivity, SelectWords::class.java)
-                        intent.putExtra("value",2)
+                        intent.putExtra("value" , level)
+                        intent.putExtra("name" , name)
                         startActivity(intent)
                     }
                 }
@@ -78,7 +83,8 @@ class WordsActivity : AppCompatActivity() {
                         mHandler.postDelayed(this,500)
                     }else{
                         val intent = Intent(this@WordsActivity, SelectWords::class.java)
-                        intent.putExtra("value",3)
+                        intent.putExtra("value" , level)
+                        intent.putExtra("name" , name)
                         startActivity(intent)
                     }
                 }

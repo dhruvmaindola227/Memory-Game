@@ -27,6 +27,7 @@ class SelectWords : AppCompatActivity() {
     private var correctCount = 0
     lateinit var scoreTv: TextView
     lateinit var selectedTv: TextView
+    lateinit var userName : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_words)
@@ -34,8 +35,7 @@ class SelectWords : AppCompatActivity() {
         val end = 24
         scoreTv = findViewById<TextView>(R.id.scoreTv)
         selectedTv = findViewById(R.id.selectedTv)
-        val userName = intent.getStringExtra("name")
-
+        userName = intent.getStringExtra("name").toString()
         var btnFinish = findViewById<Button>(R.id.btnFinish)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)
@@ -61,7 +61,7 @@ class SelectWords : AppCompatActivity() {
         var tv22 = findViewById<TextView>(R.id.tv22)
         var tv23 = findViewById<TextView>(R.id.tv23)
         var tv24 = findViewById<TextView>(R.id.tv24)
-        var leveldiff = intent.getIntExtra("value", 0)
+        var leveldiff = intent.getIntExtra("value" , 0)
         var level = when (leveldiff) {
             1 -> {
                 "easy"
@@ -71,13 +71,14 @@ class SelectWords : AppCompatActivity() {
             }
             else -> "hard"
         }
+        println("in selectWords name ->" + userName)
+        println("in selectWords lveldiff ->" + leveldiff)
+
         var arrayOfTextViews = arrayListOf<TextView>(
             tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10,
             tv11, tv12, tv13, tv14, tv15, tv16, tv17, tv18, tv19, tv20,
             tv21, tv22, tv23, tv24
         )
-
-
 
         when (leveldiff) {
 
@@ -103,6 +104,7 @@ class SelectWords : AppCompatActivity() {
             }
 
         }
+
         var newUser = true
         var list = ArrayList<Leaderboard>()
         writeListToPreferences(list)
@@ -141,6 +143,7 @@ class SelectWords : AppCompatActivity() {
                 val intent = Intent(this@SelectWords, LeaderBoardActivity::class.java)
                 startActivity(intent)
             }
+            println("in selectWords correct ->" + correctCount)
         }
             }
 
