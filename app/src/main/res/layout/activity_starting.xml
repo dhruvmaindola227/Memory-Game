@@ -50,6 +50,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="130dp">
 
+
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
@@ -58,8 +59,17 @@
                 android:fontFamily="@font/poppins_medium"
                 android:outlineAmbientShadowColor="#8D99AE"
                 android:textColorHint="@color/black">
-
             </EditText>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/et_name"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:hint="Enter Name"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:outlineAmbientShadowColor="#8D99AE"-->
+<!--                android:textColorHint="@color/black">-->
+
+<!--            </com.google.android.material.textfield.TextInputEditText>-->
 
 
         </com.google.android.material.textfield.TextInputLayout>

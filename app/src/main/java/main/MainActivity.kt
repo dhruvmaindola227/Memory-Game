@@ -1,11 +1,14 @@
-package main
+package com.example.gameattempt
 
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.view.WindowManager
 import android.widget.Button
-import com.example.gameattempt.R
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnEasy:Button
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         btnEasy=findViewById(R.id.btnEasy)
         btnMedium=findViewById(R.id.btnMedium)
         btnHard=findViewById(R.id.btnHard)
+
         btnEasy.setOnClickListener {
             val intent = Intent(this, WordsActivity::class.java)
             intent.putExtra("value",1)
@@ -37,4 +41,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    }
+}

@@ -1,12 +1,26 @@
-package main
+package com.example.gameattempt
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.widget.TextView
+import java.time.Duration
+import kotlin.concurrent.fixedRateTimer
+import android.widget.Toast
 import java.util.*
+import android.view.animation.Animation
 
-import com.example.gameattempt.R
+import android.view.animation.AlphaAnimation
+
+import android.view.View
+import main.SelectWords
+import main.WordArrays
+import org.w3c.dom.Text
+import java.lang.Exception
+import java.util.concurrent.DelayQueue
+import kotlin.concurrent.timerTask
 
 
 class WordsActivity : AppCompatActivity() {
@@ -39,9 +53,9 @@ class WordsActivity : AppCompatActivity() {
                         mHandler.postDelayed(this,1200)
                         //"this" keyword is being used for recursion , calling the run() method.
                     }else{
-                    val intent = Intent(this@WordsActivity, SelectWords::class.java)
-                    intent.putExtra("value",1)
-                    startActivity(intent)
+                        val intent = Intent(this@WordsActivity, SelectWords::class.java)
+                        intent.putExtra("value",1)
+                        startActivity(intent)
                     }
                 }
 
@@ -70,7 +84,7 @@ class WordsActivity : AppCompatActivity() {
                 }
             }
         }
-        }
+    }
 
     //to set different elements in different textviews.
     fun rand(start: Int, end: Int): Int {
@@ -79,22 +93,8 @@ class WordsActivity : AppCompatActivity() {
             numSet.add(numberToReturn)
         }else{
             numberToReturn = rand(start,end)
-        //recursively calling the function until it returns a unique number in the given range
+            //recursively calling the function until it returns a unique number in the given range
         }
         return numberToReturn
     }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

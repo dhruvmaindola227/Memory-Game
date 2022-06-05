@@ -35,6 +35,7 @@ class SelectWords : AppCompatActivity() {
         scoreTv = findViewById<TextView>(R.id.scoreTv)
         selectedTv = findViewById(R.id.selectedTv)
         val userName = intent.getStringExtra("name")
+
         var btnFinish = findViewById<Button>(R.id.btnFinish)
         var tv1 = findViewById<TextView>(R.id.tv1)
         var tv2 = findViewById<TextView>(R.id.tv2)

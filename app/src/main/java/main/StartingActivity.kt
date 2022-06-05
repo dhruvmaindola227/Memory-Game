@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.gameattempt.MainActivity
 import com.example.gameattempt.R
 
 class StartingActivity : AppCompatActivity() {
@@ -19,9 +20,8 @@ class StartingActivity : AppCompatActivity() {
                 Toast.makeText(this,"Please enter your name first",Toast.LENGTH_LONG).show()
             else {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("name" , etName.text.toString())
                 startActivity(intent)
-                val intent2 = Intent(this@StartingActivity , SelectWords::class.java)
-                intent2.putExtra("name" , etName.toString())
                 finish()
             }
         }

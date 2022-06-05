@@ -13,7 +13,7 @@
             android:name="main.StartingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.StartingActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_starting" />
         <activity
@@ -23,7 +23,7 @@
             android:name="main.SelectWords"
             android:exported="false" />
         <activity
-            android:name="main.WordsActivity"
+            android:name=".WordsActivity"
             android:exported="false" />
         <activity
             android:name="main.SplashActivity"
