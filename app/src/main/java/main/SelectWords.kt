@@ -105,7 +105,8 @@ class SelectWords : AppCompatActivity() {
 
         }
 
-        var newUser = true
+        var newNameUser = true
+        var sameLevelFound = true
         var list = ArrayList<Leaderboard>()
 //        writeListToPreferences(list)
         btnFinish.setOnClickListener {
@@ -114,30 +115,32 @@ class SelectWords : AppCompatActivity() {
             } else {
                 var leaderboard = Leaderboard(userName.toString() , correctCount.toString() , level)
                 list = readListFromPreferences()
+                println("Sharedpreferences read list $list")
                 if(list.isEmpty()){
                     list.add(leaderboard)
 //                    writeListToPreferences(list)
                 //if list in spfs is empty then add new leaderboard element
-                }else{ //otherwise compare previous values and then add.
-                    for (i in 0 until list.size){
-                        newUser = true
-                        if(list[i].name == userName){
-                            if(list[i].level == level){
-                                if(list[i].highScore.toInt() < correctCount){
+                }else { //otherwise compare previous values and then add.
+                    for (i in 0 until list.size) {
+                        newNameUser = true
+                        sameLevelFound = false
+                        if (list[i].name == userName) {
+                            newNameUser = false
+                            if (list[i].level == level) {
+                                sameLevelFound = true
+                                if (list[i].highScore.toInt() <= correctCount) {
                                     list[i].highScore = correctCount.toString()
-                                    newUser = false
                                     break
                                 }
-                            }else{
-                                list.add(leaderboard)
-                                newUser = false
-                                break
                             }
                         }
                     }
-                    if(newUser){
+                    if (newNameUser) {
+                        list.add(leaderboard)
+                    }else if(!newNameUser && !sameLevelFound){
                         list.add(leaderboard)
                     }
+                }
                 }
                 writeListToPreferences(list)
                 val intent = Intent(this@SelectWords, FinalScreenActivity::class.java)
@@ -147,7 +150,7 @@ class SelectWords : AppCompatActivity() {
             }
 
         }
-            }
+
 
     fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {
         var wasClicked = false
@@ -220,10 +223,13 @@ class SelectWords : AppCompatActivity() {
 
     fun readListFromPreferences(): ArrayList<Leaderboard> {
         var sharePref = getSharedPreferences("userScores", Context.MODE_PRIVATE)
-        var jsonString = sharePref.getString(LIST_KEY, "")
+        var jsonString : String? = sharePref.getString(LIST_KEY, "")
         var gson = Gson()
         val type = object : TypeToken<List<Leaderboard>>() {}.type
-        return gson.fromJson(jsonString, type)
+        if(jsonString!= ""){
+            return gson.fromJson(jsonString, type)
+        }
+        return arrayListOf()
     }
 
 }
