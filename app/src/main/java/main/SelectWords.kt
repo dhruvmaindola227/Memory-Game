@@ -116,7 +116,7 @@ class SelectWords : AppCompatActivity() {
                 list = readListFromPreferences()
                 if(list.isEmpty()){
                     list.add(leaderboard)
-                    writeListToPreferences(list)
+//                    writeListToPreferences(list)
                 //if list in spfs is empty then add new leaderboard element
                 }else{ //otherwise compare previous values and then add.
                     for (i in 0 until list.size){
