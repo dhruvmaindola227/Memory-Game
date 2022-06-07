@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameAttempt">
         <activity
+            android:name="main.FinalScreenActivity"
+            android:exported="false" />
+        <activity
             android:name="main.StartingActivity"
             android:exported="false" />
         <activity

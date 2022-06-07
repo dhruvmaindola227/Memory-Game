@@ -107,7 +107,6 @@ class SelectWords : AppCompatActivity() {
 
         var newUser = true
         var list = ArrayList<Leaderboard>()
-        writeListToPreferences(list)
         btnFinish.setOnClickListener {
             if (selectedCount < 10) {
                 Toast.makeText(this, "You need to select 10 words.", Toast.LENGTH_SHORT).show()
@@ -143,7 +142,7 @@ class SelectWords : AppCompatActivity() {
                 val intent = Intent(this@SelectWords, LeaderBoardActivity::class.java)
                 startActivity(intent)
             }
-            println("in selectWords correct ->" + correctCount)
+            println("in selectWords correct ->$correctCount")
         }
             }
 
