@@ -17,7 +17,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
 class SelectWords : AppCompatActivity() {
@@ -27,7 +26,7 @@ class SelectWords : AppCompatActivity() {
     private var correctCount = 0
     lateinit var scoreTv: TextView
     lateinit var selectedTv: TextView
-    lateinit var userName : String
+    lateinit var userName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_words)
@@ -61,7 +60,7 @@ class SelectWords : AppCompatActivity() {
         var tv22 = findViewById<TextView>(R.id.tv22)
         var tv23 = findViewById<TextView>(R.id.tv23)
         var tv24 = findViewById<TextView>(R.id.tv24)
-        var leveldiff = intent.getIntExtra("value" , 0)
+        var leveldiff = intent.getIntExtra("value", 0)
         var level = when (leveldiff) {
             1 -> {
                 "easy"
@@ -107,49 +106,66 @@ class SelectWords : AppCompatActivity() {
 
         var newNameUser = true
         var sameLevelFound = true
-        var list = ArrayList<Leaderboard>()
-//        writeListToPreferences(list)
+        var list: ArrayList<Leaderboard>
         btnFinish.setOnClickListener {
             if (selectedCount < 10) {
-                Toast.makeText(this, "You need to select 10 words.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "You neehgntd to select 10 words.", Toast.LENGTH_SHORT).show()
             } else {
-                var leaderboard = Leaderboard(userName.toString() , correctCount.toString() , level)
+                var leaderboard = Leaderboard(userName.toString(), correctCount.toString(), level)
                 list = readListFromPreferences()
-                println("Sharedpreferences read list $list")
-                if(list.isEmpty()){
+//                println("Sharedpreferences read list $list")
+                if (list.isEmpty()) {
                     list.add(leaderboard)
-//                    writeListToPreferences(list)
-                //if list in spfs is empty then add new leaderboard element
-                }else { //otherwise compare previous values and then add.
-                    for (i in 0 until list.size) {
-                        newNameUser = true
-                        sameLevelFound = false
-                        if (list[i].name == userName) {
-                            newNameUser = false
-                            if (list[i].level == level) {
-                                sameLevelFound = true
-                                if (list[i].highScore.toInt() <= correctCount) {
-                                    list[i].highScore = correctCount.toString()
-                                    break
-                                }
-                            }
+                    println(list)
+                    //if list in spfs is empty then add new leaderboard element
+                } else { //otherwise compare previous values and then add.
+                    if(!containsName(list)){
+                        println("list BEFORE !containsName() $list")
+                        list.add(leaderboard)
+                        println("list AFTER !containsName() $list")
+                    }else if(sameNameLevelPresent(list , level) != -1){
+                        println("list before sameNameLevelPresent != -1 $list")
+                        var index = sameNameLevelPresent(list , level)
+                        if(list[index].highScore.toInt() <= correctCount){
+                            list[index].highScore = correctCount.toString()
                         }
+                        println("list BEFORE sameNameLevelPresent != -1 $list")
                     }
-                    if (newNameUser) {
+                    else if(sameNameLevelPresent(list , level) == -1){
+                        println("list before sameNameLevelPresent == -1 $list")
                         list.add(leaderboard)
-                    }else if(!newNameUser && !sameLevelFound){
-                        list.add(leaderboard)
+                        println("list AFTER sameNameLevelPresent == -1 $list")
                     }
-                }
                 }
                 writeListToPreferences(list)
+//                println("Sharedpreferences write list $list")
                 val intent = Intent(this@SelectWords, FinalScreenActivity::class.java)
-                intent.putExtra("score" , correctCount)
-                intent.putExtra("name" , userName)
+                intent.putExtra("score", correctCount)
+                intent.putExtra("name", userName)
                 startActivity(intent)
             }
 
         }
+
+    }
+
+    private fun containsName(list: ArrayList<Leaderboard>) : Boolean{
+        for (i in 0 until list.size){
+            if(list[i].name == userName){
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun sameNameLevelPresent(list: ArrayList<Leaderboard> , level : String) : Int{
+        for (i in 0 until list.size){
+            if(list[i].name == userName && list[i].level == level){
+                return i
+            }
+        }
+        return -1
+    }
 
 
     fun setClickListeners(arrayOfTextViews: ArrayList<TextView>, level: Int) {
@@ -223,13 +239,14 @@ class SelectWords : AppCompatActivity() {
 
     fun readListFromPreferences(): ArrayList<Leaderboard> {
         var sharePref = getSharedPreferences("userScores", Context.MODE_PRIVATE)
-        var jsonString : String? = sharePref.getString(LIST_KEY, "")
+        var jsonString: String? = sharePref.getString(LIST_KEY, "")
         var gson = Gson()
         val type = object : TypeToken<List<Leaderboard>>() {}.type
-        if(jsonString!= ""){
+        if (jsonString != "") {
             return gson.fromJson(jsonString, type)
         }
         return arrayListOf()
     }
-
 }
+
+
